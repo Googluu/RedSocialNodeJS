@@ -25,7 +25,7 @@ index.js -> We define how a component interacts with the microservice
 
 
 ---
-# Estructuras de datos para nuestro proyecto:
+# Data structures for our project:
 <div align="center">
 <img src="https://static.platzi.com/media/user_upload/_Blank%20ERD%20%26%20Data%20Flow-c1b73ed2-31b9-4515-9a35-33e68d8215e3.jpg" width="100%"/>
 </div>
