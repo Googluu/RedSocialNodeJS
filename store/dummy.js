@@ -1,13 +1,11 @@
 const db = {
     'user': [
         { id: '1', name: 'Carlos' },
-        { id: '2', name: 'sera' },
-        { id: '', name: 'paul' }
     ],
 };
 
 async function list(tabla) {
-    return db[tabla]
+    return db[tabla] || [];
 }
 
 async function get(tabla, id) {
@@ -16,11 +14,25 @@ async function get(tabla, id) {
 }
 
 async function upsert(tabla, data) {
-    db[collection].push(data);
+    if (!db[tabla]) {
+        db[tabla] = [];
+    }
+
+    db[tabla].push(data);
+
+    console.log(db);
 }
 
 async function remove(tabla, id) {
     return true;
+}
+
+async function query(tabla, q) {
+    let col = await list(tabla);
+    let keys = Object.keys(q);
+    let key = keys[0];
+
+    return col.filter(item => item[key] === q[key])[0] || null;
 }
 
 module.exports = {
@@ -28,5 +40,5 @@ module.exports = {
     get,
     upsert,
     remove,
+    query
 };
-
